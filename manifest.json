@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "Course Smarts SFU",
+  "version": "0.0.1",
+  "description": "Extension that displays relevant RateMyProf and Coursedigger info for an SFU coure webpage",
+  "content_scripts": [
+    {
+      "matches": ["https://www.sfu.ca/students/calendar/*/courses/*/*.html"],
+      "js": ["content.js"]
+    }
+  ]
+}
