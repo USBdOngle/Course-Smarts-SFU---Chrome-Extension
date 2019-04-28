@@ -8,7 +8,8 @@ export class pageDetails{
     get data(){
         return this._data;
     }
-    _extractCourse(url){
+    _extractCourse(){
+        let url = window.location.href;
         let mid = url.lastIndexOf('/'); //number portion of course name after this
         let secondHalf = url.substring(mid+1, url.lastIndexOf('.')).toUpperCase();
         url = url.substring(0,mid); //remove portion of string we just extracted
