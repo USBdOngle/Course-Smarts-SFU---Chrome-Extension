@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Course Smarts SFU",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Extension that displays relevant RateMyProf and Coursedigger info for an SFU course web page",
   "content_security_policy":"script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'",
   "content_scripts": [
