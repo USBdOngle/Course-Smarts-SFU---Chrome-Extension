@@ -21,6 +21,13 @@ export class pageDetails{
         let profList = [];
         for (let i = 0; i < profs.length; i++) {
             let potential = profs[i].getElementsByTagName('td')[1].innerText.trim();
+
+            let newline = potential.search('\n');
+            if (newline !== -1){
+                potential = potential.substr(0,newline); //sometimes a profs name and a sessional will be put together
+            }
+
+            //make sure prof name is unique, we don't care about sessional or faculty people
             if (potential.length > 0 && !profList.includes(potential) && potential !== 'Sessional' && potential !== 'Faculty') {
                 profList.push(potential);
             }

@@ -1,0 +1,7 @@
+{
+  "name": "ChromeExtension",
+  "version": "1.0.0",
+  "dependencies": {
+    "firebase": "^5.11.0"
+  }
+}
