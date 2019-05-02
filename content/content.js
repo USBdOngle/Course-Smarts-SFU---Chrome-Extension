@@ -1,11 +1,11 @@
 
 /*
 This allows me to be more modular in how I wrote my content script.
-Currently it does not allow for imports so we can get our content script to inject the scripts we want
+Currently it does not allow for imports so we can dynamically import a main function from another file
  */
 
-const script = document.createElement('script');
-script.setAttribute("type", "module");
-script.setAttribute("src", chrome.extension.getURL('content/main.js'));
-const head = document.head || document.getElementsByTagName("head")[0] || document.documentElement;
-head.insertBefore(script, head.lastChild);
+(async () => {
+    const src = chrome.extension.getURL('content/main.js');
+    const contentScript = await import(src);
+    contentScript.main();
+})();
