@@ -4,6 +4,7 @@
   "version": "0.0.4",
   "description": "Extension that displays relevant RateMyProf and Coursedigger info for an SFU course web page",
   "content_security_policy":"script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'",
+  "permissions": ["tabs"],
   "content_scripts": [
     {
       "matches": ["*://www.sfu.ca/students/calendar/*/courses/*/*.html"],

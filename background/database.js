@@ -8,6 +8,10 @@ class dbInterface{
     //gets document containing the course name and runs passed in callback on that data
     getCourse(courseName, callback){
         this._courseRef.where("course", "==", courseName).get()
+            .catch(error =>{
+                console.log("error retrieving course: " + courseName + " error: " + error.data);
+                //TODO maybe add something more intelligent here in the future
+            })
             .then(snapshot => {
                 if (snapshot.empty){
                     console.log("unable to get course with name: " + courseName + " from database");
@@ -16,13 +20,9 @@ class dbInterface{
                     snapshot.docs.map(document => {
                         console.log("Retrieved course: " + courseName + " from database with details...");
                         console.log(document.data());
-                        callback() //TODO update this so it runs properly when I decide the best callback to use
+                        callback(document.data()); //TODO update this so it runs properly when I decide the best callback to use
                     })
                 }
-            })
-            .catch(error =>{
-                console.log("error retrieving course: " + courseName + "error: " + error.data);
-                //TODO maybe add something more intelligent here in the future
             })
     }
 
