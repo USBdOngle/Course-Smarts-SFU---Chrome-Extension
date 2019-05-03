@@ -18,32 +18,12 @@ firebase.auth().signInAnonymously()
 
 const db = new dbInterface(firebase.firestore());
 
-function messageContentScript(data) {
-    console.log(this);
-    //chrome.tabs.sendMessage(this, data);
-}
-
-chrome.runtime.onMessage.addListener((request, sender) => {
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.type === "course"){
-        db.getCourse(request.content, messageContentScript.bind(sender.id));
+        db.getCourse(request.content, sendResponse);
     }
     else if (request.type === "profs"){
-        db.getProfs(request.content, () => {
-            console.log('sending a message to receive prof info worked!')
-        })
+        db.getProfs(request.content, sendResponse);
     }
+    return true;
 });
-
-
-
-
-/*
-let dbTest= new dbInterface(firebase.firestore());
-dbTest.getCourse("CMPT 120", () =>{
-    console.log('getCourse callback ran');
-});
-
-dbTest.getProfs(["Lisa Craig", "Shit Head", "Paul Saunders"], () =>{
-    console.log("getProfs callback ran");
-});
- */

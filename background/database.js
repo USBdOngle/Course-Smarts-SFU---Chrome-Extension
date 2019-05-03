@@ -27,14 +27,16 @@ class dbInterface{
     }
 
     //profNames should be an Array
-    getProfs(profNames, callback){
+    async getProfs(profNames, callback){
+        let queriedProfs = [];
         profNames.forEach(prof => {
-            this._queryProfs(prof, callback)
+            queriedProfs.push(this._queryProfs(prof));
         });
+        await callback(queriedProfs);
     }
 
     //gets document containing the prof's name and runs passed in callback on it
-    _queryProfs(profName, callback){
+    _queryProfs(profName){
         this._profRef.where("name", "==", profName).get()
             .then(snapshot => {
                 if (snapshot.empty){
@@ -44,7 +46,7 @@ class dbInterface{
                     snapshot.docs.map(document => {
                         console.log("Retrieved prof: " + profName + " from database with details...");
                         console.log(document.data());
-                        callback() //TODO update this so it runs properly when I decide the best callback to use
+                        return document.data();
                     })
                 }
             })
