@@ -20,7 +20,7 @@ class dbInterface{
                     snapshot.docs.map(document => {
                         console.log("Retrieved course: " + courseName + " from database with details...");
                         console.log(document.data());
-                        callback(document.data()); //TODO update this so it runs properly when I decide the best callback to use
+                        callback(document.data());
                     })
                 }
             })

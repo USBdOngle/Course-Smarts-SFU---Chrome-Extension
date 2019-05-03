@@ -19,8 +19,8 @@ firebase.auth().signInAnonymously()
 const db = new dbInterface(firebase.firestore());
 
 function messageContentScript(data) {
-    console.log(this);
-    //chrome.tabs.sendMessage(this, data);
+    //console.log(this);
+    chrome.tabs.sendMessage(this, data);
 }
 
 chrome.runtime.onMessage.addListener((request, sender) => {
