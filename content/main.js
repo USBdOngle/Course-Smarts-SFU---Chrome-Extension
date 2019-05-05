@@ -5,7 +5,10 @@ export function main() {
     pageDetails.extractCourse()
         .then(name => {
             chrome.runtime.sendMessage({type: 'course', content: name}, response => {
-                console.log(response); //TODO this is where the returned data should now be added to the pages DOM
+                if (response !== null){
+                    console.log("test");
+                }
+                else console.log("received null from background script");
             });
         })
         .catch(error => {
@@ -16,7 +19,10 @@ export function main() {
     pageDetails.extractProfs()
         .then(profs => {
             chrome.runtime.sendMessage({type: 'profs', content: profs}, response => {
-                console.log(response);
+                if (response !== null){
+                    console.log("test");
+                }
+                else console.log("received null from background script");
             });
         })
         .catch(error => {
