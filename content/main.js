@@ -8,7 +8,7 @@ export function main() {
                 if (response !== null){
                     console.log("test");
                 }
-                else console.log("received null from background script");
+                else console.log("received null from background script retrieving course");
             });
         })
         .catch(error => {
@@ -22,7 +22,7 @@ export function main() {
                 if (response !== null){
                     console.log("test");
                 }
-                else console.log("received null from background script");
+                else console.log("received null from background script retrieving profs");
             });
         })
         .catch(error => {
